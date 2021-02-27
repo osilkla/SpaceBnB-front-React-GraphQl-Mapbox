@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-export const GET_SPACECENTERS = gql`
+export const GET_ALLSPACECENTERS = gql`
 query GetSpaceCenters {
   spaceCenters {
     nodes{
@@ -8,6 +8,10 @@ query GetSpaceCenters {
       description
       latitude
       longitude
+      planet{
+        id
+        name
+      }
     }
   }
 }`

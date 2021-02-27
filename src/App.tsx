@@ -10,6 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SpaceCenterFlights from './components/SpaceCenterFlights';
 
 function App() {
   const errorLink = onError(({ graphQLErrors}) => {
@@ -31,13 +32,13 @@ function App() {
   return (    
      <Router>
       <ApolloProvider client={client}>
-          <Switch>
-          <Route path="/:id">
-            <div>test route slug redirection</div>
-          </Route>
-          <Route path="/">
-            <SpaceCenterList/>
-          </Route>
+          <Switch>            
+            <Route path="/spaceCenter/:spaceCenterId">
+              <SpaceCenterFlights/>
+            </Route>
+            <Route exact path="/">
+              <SpaceCenterList/>
+            </Route>    
         </Switch>
       </ApolloProvider>     
    </Router>

@@ -1,4 +1,5 @@
 import {PaginationInfoType} from './paginationInfoType'
+import {PlanetType} from './planetType'
 
 export type SpaceCenterType ={
   id: string
@@ -7,7 +8,7 @@ export type SpaceCenterType ={
   description?: string
   latitude?: number
   longitude?: number
- // planet: Planet!
+  planet: PlanetType
 }
 
 export type SpaceCenterListType ={
