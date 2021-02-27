@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
-import { GET_SPACECENTERS } from "../../api/queries/SpaceCenter/getAllSpaceCenters";
+import { GET_ALLSPACECENTERS } from "../../api/queries/SpaceCenter/getAllSpaceCenters";
 import { SpaceCenterType } from "../../types/spaceCenterType";
+import SpaceCenterItem from "../SpaceCenterItem";
 
 function SpaceCenterList() {
-  const { error, loading, data } = useQuery(GET_SPACECENTERS);
+  const { error, loading, data } = useQuery(GET_ALLSPACECENTERS);
   const [spaceCenters, setSpaceCenters] = useState<SpaceCenterType[]>([]);
   useEffect(() => {
     if (data) {
@@ -15,7 +16,11 @@ function SpaceCenterList() {
   return (
     <div>       
       {spaceCenters && spaceCenters.map((spaceCenter:SpaceCenterType) => {
-        return <h1 key={spaceCenter.id}> {spaceCenter.name}</h1>;
+        return(
+          <div key={spaceCenter.id}>
+            <SpaceCenterItem  spaceCenter={spaceCenter}/>
+          </div>
+          ) ;
       })} 
     </div>
   );
