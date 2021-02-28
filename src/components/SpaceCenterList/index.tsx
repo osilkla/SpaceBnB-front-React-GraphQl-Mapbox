@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
-import { GET_ALLSPACECENTERS } from "../../api/queries/SpaceCenter/getAllSpaceCenters";
+import React from "react";
 import { SpaceCenterType } from "../../types/spaceCenterType";
 import SpaceCenterItem from "../SpaceCenterItem";
+import styled from "styled-components";
 
-function SpaceCenterList() {
-  const { error, loading, data } = useQuery(GET_ALLSPACECENTERS);
-  const [spaceCenters, setSpaceCenters] = useState<SpaceCenterType[]>([]);
-  useEffect(() => {
-    if (data) {
-      setSpaceCenters(data.spaceCenters.nodes);
-    }
-  }, [data]);
+const ScrollList = styled.div`
+    max-height: 100vh;
+    overflow-y: scroll;
+`;
 
+
+function SpaceCenterList({spaceCenters}) {
   return (
-    <div>       
+    <ScrollList>       
       {spaceCenters && spaceCenters.map((spaceCenter:SpaceCenterType) => {
         return(
           <div key={spaceCenter.id}>
             <SpaceCenterItem  spaceCenter={spaceCenter}/>
           </div>
-          ) ;
+          );
       })} 
-    </div>
+    </ScrollList>
   );
 }
 

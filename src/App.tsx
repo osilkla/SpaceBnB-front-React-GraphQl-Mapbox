@@ -1,5 +1,4 @@
 import React from 'react';
-import SpaceCenterList from './components/SpaceCenterList';
 import './App.css';
   import { ApolloClient, HttpLink, from, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error'
@@ -7,12 +6,13 @@ import { BASE_API_URI,API_KEY } from './conf'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import SpaceCenterFlights from './components/SpaceCenterFlights';
+import Home from './pages/Home.page';
 
 function App() {
+
   const errorLink = onError(({ graphQLErrors}) => {
     if (graphQLErrors) {
       graphQLErrors.map(({ message}):void => alert(`Graphql error ${message}`));      
@@ -37,7 +37,7 @@ function App() {
               <SpaceCenterFlights/>
             </Route>
             <Route exact path="/">
-              <SpaceCenterList/>
+              <Home/>
             </Route>    
         </Switch>
       </ApolloProvider>     
