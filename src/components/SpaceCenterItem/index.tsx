@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import Card from "../common/Card";
 import styled from "styled-components";
 import SpaceTripLink from "../common/Link";
+import SpaceCenterContext from "../../context/SpaceCenterContext";
 
 const Title = styled.h1`
   font-family: Lato;
@@ -39,18 +39,21 @@ const Footer = styled.footer`
 `;
 
 const SpaceCenterItem = ({spaceCenter}) => {
+  const [currentSpaceCenter, setCurrentSpaceCenter] = useContext(SpaceCenterContext);
 
   if(!spaceCenter){
     return <div>...Loading</div>
   } 
   return (
-    <Card>       
-      <Title>{spaceCenter.name}</Title>
-      <SubTitle>{spaceCenter.planet.name}</SubTitle>
-      <Footer>
-        <SpaceTripLink to={`/spaceCenter/${spaceCenter.id}`}>See All Flights</SpaceTripLink>
-      </Footer>
-    </Card>
+    <div onMouseEnter={()=>setCurrentSpaceCenter(spaceCenter)} onMouseLeave={()=>setCurrentSpaceCenter(null)}>
+      <Card>       
+        <Title>{spaceCenter.name}</Title>
+        <SubTitle>{spaceCenter.planet.name}</SubTitle>
+        <Footer>
+          <SpaceTripLink to={`/spaceCenter/${spaceCenter.id}`}>See All Flights</SpaceTripLink>
+        </Footer>
+      </Card>
+    </div>
   );
 }
 

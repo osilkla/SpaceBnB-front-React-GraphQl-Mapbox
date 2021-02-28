@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
+import React, { FunctionComponent } from "react";
+import { useQuery } from "@apollo/client";
 import { GET_SPACECENTER } from "../../api/queries/SpaceCenter/getSpaceCenter";
 import { Link, useParams } from "react-router-dom";
 
 
-const SpaceCenterFlights= () => {
+const SpaceCenterFlights:FunctionComponent= () => {
  const { spaceCenterId } = useParams<Record<string, string | undefined>>()
   
   const { data, loading, error } = useQuery(GET_SPACECENTER, { variables: { spaceCenterId:spaceCenterId } }
