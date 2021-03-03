@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useEffect, useRef } from "react";
 import Card from "../common/Card";
 import styled from "styled-components";
 import SpaceTripLink from "../common/Link";
-import SpaceCenterContext from "../../context/SpaceCenterContext";
+import { useCurrentSpaceCenter } from "../../context/SpaceCenterContext";
+import RocketIcon from "../common/RocketIcon";
 
 const Title = styled.h1`
   font-family: Lato;
@@ -38,17 +39,26 @@ const Footer = styled.footer`
    }
 `;
 
-const SpaceCenterItem = ({spaceCenter}) => {
-  const [currentSpaceCenter, setCurrentSpaceCenter] = useContext(SpaceCenterContext);
 
-  if(!spaceCenter){
-    return <div>...Loading</div>
-  } 
+const SpaceCenterItem = ({ spaceCenter }) => {
+  const spaceCenterRef = useRef<HTMLDivElement>(null);
+  const [currentSpaceCenterSelected, setCurrentSpaceCenterSelected] = useCurrentSpaceCenter();
+
+  useEffect(() => {
+    if (currentSpaceCenterSelected && spaceCenter.id === currentSpaceCenterSelected.id) {
+      spaceCenterRef.current.scrollIntoView();
+    }
+  }, [currentSpaceCenterSelected, spaceCenter.id]);
+
   return (
-    <div onMouseEnter={()=>setCurrentSpaceCenter(spaceCenter)} onMouseLeave={()=>setCurrentSpaceCenter(null)}>
-      <Card>       
+    <div
+      ref={spaceCenterRef}
+      onClick={() => setCurrentSpaceCenterSelected(spaceCenter)}
+    >
+      <Card>
         <Title>{spaceCenter.name}</Title>
         <SubTitle>{spaceCenter.planet.name}</SubTitle>
+        <RocketIcon />
         <Footer>
           <SpaceTripLink to={`/spaceCenter/${spaceCenter.id}`}>See All Flights</SpaceTripLink>
         </Footer>

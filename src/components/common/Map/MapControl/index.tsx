@@ -1,5 +1,4 @@
 import GeoControl from "./GeolocateControl"
-
 import NavControl from './NavigationControl'
 
 const MapControl = () => {

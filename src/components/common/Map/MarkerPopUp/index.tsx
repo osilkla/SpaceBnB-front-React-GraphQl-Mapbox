@@ -9,11 +9,15 @@ const SpacePicture = styled.div`
     height:130px;
     background-image: url(${process.env.PUBLIC_URL + '/space.jpg'});
 `;
-const MarkerPopUp = ({text}) => {
+
+export interface MarkerPopupProps {
+  children: React.ReactNode;
+}
+const MarkerPopUp = ({ children }: MarkerPopupProps) => {
   return (
     <StyledMarker>
       <SpacePicture/>
-        {text}
+      {children}
     </StyledMarker>
   );
 }

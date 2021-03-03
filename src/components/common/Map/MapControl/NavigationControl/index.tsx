@@ -1,12 +1,13 @@
 import React from "react";
-import{ NavigationControl}from 'react-map-gl';
+import { NavigationControl } from 'react-map-gl';
 
-const NavControl = () => {
-  const navControlStyle= {
+const navControlStyle = {
   right: 10,
   top: 50
-  };
-  return(
+};
+
+const NavControl = () => {
+  return (
     <NavigationControl style={navControlStyle} />
   )
 }

@@ -1,7 +1,7 @@
-import {PaginationInfoType} from './paginationInfoType'
-import {PlanetType} from './planetType'
+import { PaginationInfoType } from './paginationInfoType'
+import { PlanetType } from './planetType'
 
-export type SpaceCenterType ={
+export type SpaceCenterType = {
   id: string
   uid: string
   name: string
@@ -11,7 +11,7 @@ export type SpaceCenterType ={
   planet: PlanetType
 }
 
-export type SpaceCenterListType ={
+export type SpaceCenterListType = {
   pagination: PaginationInfoType
   nodes: [SpaceCenterType]
 }

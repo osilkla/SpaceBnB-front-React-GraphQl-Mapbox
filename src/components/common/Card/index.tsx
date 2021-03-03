@@ -11,9 +11,16 @@ const Container = styled.div`
   &:hover{
     filter: drop-shadow(0px 4px 8px rgba(51, 51, 51, 0.323317));
   }
+  @media (max-width: 720px) {   
+    width: 300px;
+    height: 150px;
+  }
 `;
 
-const Card = ({children}) => {
+export interface CardProps {
+  children: React.ReactNode;
+}
+const Card = ({children}: CardProps) => {
   return (
     <Container>       
       {children}
