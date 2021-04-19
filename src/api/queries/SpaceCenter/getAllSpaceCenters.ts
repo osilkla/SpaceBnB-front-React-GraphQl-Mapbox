@@ -3,7 +3,7 @@ export const GET_ALLSPACECENTERS = gql`
 query GetSpaceCenters {
   spaceCenters {
     nodes{
-      id
+      uid
       name
       description
       latitude

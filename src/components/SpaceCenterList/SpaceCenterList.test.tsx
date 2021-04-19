@@ -66,7 +66,7 @@ test("renders spaceCenter", () => {
               >
                 <a
                   class="sc-gsTCUz ekUdVR"
-                  href="/spaceCenter/1"
+                  href="/spaceCenter/da9c2dee-3b38-4d21-b911-083599c05dad"
                 >
                   See All Flights
                 </a>
@@ -99,7 +99,7 @@ test("renders spaceCenter", () => {
               >
                 <a
                   class="sc-gsTCUz ekUdVR"
-                  href="/spaceCenter/2"
+                  href="/spaceCenter/3d1d7388-5760-4658-aa3d-b90d88cc457d"
                 >
                   See All Flights
                 </a>

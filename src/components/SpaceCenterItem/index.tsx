@@ -45,10 +45,10 @@ const SpaceCenterItem = ({ spaceCenter }) => {
   const [currentSpaceCenterSelected, setCurrentSpaceCenterSelected] = useCurrentSpaceCenter();
 
   useEffect(() => {
-    if (currentSpaceCenterSelected && spaceCenter.id === currentSpaceCenterSelected.id) {
+    if (currentSpaceCenterSelected && spaceCenter.uid === currentSpaceCenterSelected.uid) {
       spaceCenterRef.current.scrollIntoView();
     }
-  }, [currentSpaceCenterSelected, spaceCenter.id]);
+  }, [currentSpaceCenterSelected, spaceCenter.uid]);
 
   return (
     <div
@@ -60,7 +60,7 @@ const SpaceCenterItem = ({ spaceCenter }) => {
         <SubTitle>{spaceCenter.planet.name}</SubTitle>
         <RocketIcon />
         <Footer>
-          <SpaceTripLink to={`/spaceCenter/${spaceCenter.id}`}>See All Flights</SpaceTripLink>
+          <SpaceTripLink to={`/spaceCenter/${spaceCenter.uid}`}>See All Flights</SpaceTripLink>
         </Footer>
       </Card>
     </div>
